@@ -1,0 +1,134 @@
+{
+    "name": "golang proj1 env",
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+    "appPort": [
+        "3000:3000"
+    ],
+    "service": "go-docker-env",
+    "runServices": [
+        "go-docker-env"
+    ],
+    "shutdownAction": "stopCompose",
+    // "postCreateCommand": "go mod download", // installs go modules
+    "workspaceFolder": "/workspace",
+    "runArgs": [
+        "-v",
+        "/var/run/docker.sock:/var/run/docker.sock",
+        "-v",
+        "rimu-meta-eu1-crawler:/root/.vscode-server"
+        // When you have installed Go, you can do go get -v github.com/user/repo to download, build, and install a library. (The -v flag is just here for verbosity, you can remove it if you prefer your toolchain to be swift and silent!)
+        // You can also do go get github.com/user/repo/... (yes, that’s three dots) to download, build, and install all the things in that repo (including libraries and binaries).
+    ],
+    "settings": {
+        // General settings
+        "files.eol": "\n",
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "remote.extensionKind": {
+            "ms-azuretools.vscode-docker": "workspace"
+        },
+        // Golang general settings
+        "go.useLanguageServer": true,
+        "go.autocompleteUnimportedPackages": true,
+        "go.gotoSymbol.includeImports": true,
+        "go.gotoSymbol.includeGoroot": true,
+        "gopls": {
+            "completeUnimported": true,
+            "deepCompletion": true,
+            "usePlaceholders": false
+        },
+        "go.lintTool": "golangci-lint",
+        "go.lintFlags": [
+            "--fast",
+            "--enable",
+            "bodyclose",
+            "--enable",
+            "dogsled",
+            "--enable",
+            "dupl",
+            "--enable",
+            "gochecknoglobals",
+            "--enable",
+            "gochecknoinits",
+            "--enable",
+            "gocognit",
+            "--enable",
+            "goconst",
+            "--enable",
+            "gocritic",
+            "--enable",
+            "gocyclo",
+            "--enable",
+            "goimports",
+            "--enable",
+            "golint",
+            "--enable",
+            "gosec",
+            "--enable",
+            "interfacer",
+            "--enable",
+            "maligned",
+            "--enable",
+            "misspell",
+            "--enable",
+            "nakedret",
+            "--enable",
+            "prealloc",
+            "--enable",
+            "scopelint",
+            "--enable",
+            "staticcheck",
+            "--enable",
+            "unconvert",
+            "--enable",
+            "unparam",
+            "--enable",
+            "whitespace"
+        ],
+        // Golang on save
+        "go.buildOnSave": "workspace",
+        "go.lintOnSave": "workspace",
+        "go.vetOnSave": "workspace",
+        "editor.formatOnSave": true,
+        "[go]": {
+            "editor.codeActionsOnSave": {
+                "source.organizeImports": true
+            }
+        },
+        // Golang testing
+        "go.toolsEnvVars": {
+            "GOFLAGS": "-tags=integration"
+        },
+        "gopls.env": {
+            "GOFLAGS": "-tags=integration"
+        },
+        "go.testEnvVars": {},
+        "go.testFlags": [
+            "-v",
+            "-race"
+        ],
+        "go.testTimeout": "600s"
+    },
+    "extensions": [
+        // Docker
+        "ms-azuretools.vscode-docker", // Docker
+        // Go
+        "golang.go", // Go
+        // Console
+        "IBM.output-colorizer", // logfile syntax highlighting
+        // Git
+        //"eamodio.gitlens",
+        //"mhutchie.git-graph",
+        //"github.vscode-pull-request-github",
+        // Markdown linter
+        // "davidanson.vscode-markdownlint",
+        // Other helpers
+        "shardulm94.trailing-spaces",
+        "Gruntfuggly.todo-tree", // #TODO, #FIXME etc in tree view
+        "stkb.rewrap", // rewrap comments after n characters on one line
+        // Other
+        "jrebocho.vscode-random", // generate random values
+        // "vscode-icons-team.vscode-icons" icons in vscode
+    ]
+}
